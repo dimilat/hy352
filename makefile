@@ -10,6 +10,7 @@ run:
 clean:
 	@echo "Cleaning executables.."
 	rm *.out
+	
 transfer1:
 	scp hy352/* csd3787@kiwi.csd.uoc.gr://home/ugrads/class16/csd3787/hy352/
 transfer2:
