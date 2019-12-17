@@ -2,7 +2,7 @@ all: build run
 
 build:
 	@echo "Building hello.cpp.."
-	g++ -std=c++14 -Wall src/hello.cpp -o game.out
+	g++ -std=c++14 -Wall src/hello.cpp src/data.h -o game.out
 	mv *.out bin
 
 run:
@@ -10,7 +10,7 @@ run:
 
 clean:
 	@echo "Cleaning executables.."
-	rm *.out
+	rm bin/*.out
 	
 transfer1:
 	scp hy352/* csd3787@kiwi.csd.uoc.gr://home/ugrads/class16/csd3787/hy352/

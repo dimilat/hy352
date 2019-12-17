@@ -1,11 +1,13 @@
-#include <iostream>
-#include <vector>
 #include "data.h"
+#pragma once
 
 using namespace std;
 
 int main() {
-    vector<string> msg{"Hello", "C++", "World", "from", "VS Code!"};
+
+    Wizard* harry = new Wizard("Harry Potter", House::Gryffindor, 100);
+    
+    vector<string> msg{harry->getWizardName(), std::to_string(harry->getWizardHouse()), std::to_string(harry->getWizardHp()), "from", "VS Code!"};
     // this is a comment
     for (const string& word : msg) {
         cout << word << " ";
