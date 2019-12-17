@@ -3,9 +3,10 @@ all: build run
 build:
 	@echo "Building hello.cpp.."
 	g++ -std=c++14 -Wall src/hello.cpp -o game.out
+	mv *.out bin
 
 run:
-	./game.out
+	bin/game.out
 
 clean:
 	@echo "Cleaning executables.."
