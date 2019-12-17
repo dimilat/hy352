@@ -2,7 +2,7 @@ all: build run
 
 build:
 	@echo "Building hello.cpp.."
-	g++ -std=c++14 hello.cpp -o game.out
+	g++ -std=c++14 -Wall src/hello.cpp -o game.out
 
 run:
 	./game.out
