@@ -2,7 +2,7 @@
 
 /* PROGRAM AFTER DEFINES WILL RUN HERE
    EX. 
-
+    
     BEGIN_GAME
 
         CREATE WIZARD { NAME: "name", HOUSE: "house", HP: health_points }
