@@ -16,11 +16,11 @@ enum House {
 
 class Wizard {
    private:
-    /* data */
     string name;
     House house;
     int hp;
     std::vector<Spell> SpellsKnown;  // vector of spells that the wizard knows
+    bool has_wand = true;
 
    public:
     // target constructor to make a wizard
@@ -41,8 +41,8 @@ class Wizard {
 
 class Spell {
    private:
-    /* data */
     string name;
+    void action;
 
    public:
     Spell(string name) : name(name){};
@@ -52,6 +52,23 @@ class Spell {
     /*  Function that will be implemented dynamically during the CREATE SPELL???*/
     void action();
     string getSpellName();
+};
+
+class Round {
+   private:
+    int player = 1;
+
+   public:
+    Round(){};
+    ~Round(){};
+
+    void changeRound() {
+        if (this->player == 1) {
+            this->player = 2;
+        } else {
+            this->player = 1;
+        }
+    }
 };
 
 string Wizard::getWizardName() {
@@ -93,7 +110,7 @@ string toStringOfHouse(House house) {
     }
 }
 
-std::ostream& operator<<(std::ostream& os, Spell* spell) {
-    os << spell->getSpellName();
+std::ostream& operator<<(std::ostream& os, Spell spell) {
+    os << spell.getSpellName();
     return os;
 }

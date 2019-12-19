@@ -10,11 +10,11 @@
 int main() {
     std::vector<Spell> Spells;
 
-    Wizard* harry = new Wizard("Harry Potter", House::Gryffindor, 100);
-    Spell* boom = new Spell("Avada Kedavra");
+    Wizard harry("Harry Potter", House::Gryffindor, 100);  // new goes on the heap and makes pointer
+    Spell boom("Avada Kedavra");                           // this way goes to the stack
 
-    std::vector<string> msg{harry->toString(), "from", "VS Code!"};
-    // this is a comment
+    std::vector<string> msg{harry.toString(), "from", "VS Code!"};
+    
     for (const string& word : msg) {
         std::cout << word << " ";
     }
