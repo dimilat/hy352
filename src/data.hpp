@@ -6,6 +6,7 @@
 using std::string;
 class Wizard;
 class Spell;
+
 enum House {
     Gryffindor,
     Hufflepuff,
@@ -36,6 +37,7 @@ class Wizard {
     virtual string getWizardName();
     virtual std::vector<Spell> getWizardSpells();
     virtual string toString();
+    virtual void removeWand();
 };
 
 class Spell {
@@ -83,6 +85,9 @@ House Wizard::getWizardHouse() {
 }
 int Wizard::getWizardHp() {
     return this->hp;
+}
+void Wizard::removeWand() {
+    this->has_wand = false;
 }
 string Wizard::toString() {
     return "Name: " + this->getWizardName() + ",House: " + std::to_string(this->getWizardHouse()) + ",Hp: " + std::to_string(this->getWizardHp());

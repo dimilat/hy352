@@ -7,6 +7,7 @@
 #define SPELL
 
 int main() {
+    // all the spells that exist
     std::vector<Spell> Spells;
 
     Wizard harry("Harry Potter", House::Gryffindor, 100);  // new goes on the heap and makes pointer
@@ -15,7 +16,8 @@ int main() {
     Spell boom("Avada Kedavra", ([](Wizard attacker, Wizard defender) { std::cout << "from: " << attacker << std::endl
                                                                                   << "to: " << defender << std::endl; }));
 
-    Spell afoplisious("Expeliarmus", ([](Wizard attacker, Wizard defender) { std::cout << "from: " << attacker << std::endl
+    Spell afoplisious("Expeliarmus", ([](Wizard attacker, Wizard defender) { defender.removeWand();
+                                                                             std::cout << "from: " << attacker << std::endl
                                                                                        << "to: " << defender << std::endl; }));
     /*
     std::vector<string> msg{harry.toString(), "from", "VS Code!"};
