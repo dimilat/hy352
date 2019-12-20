@@ -6,7 +6,6 @@
 using std::string;
 class Wizard;
 class Spell;
-
 enum House {
     Gryffindor,
     Hufflepuff,
@@ -42,15 +41,21 @@ class Wizard {
 class Spell {
    private:
     string name;
-    void action;
+
+    // action function definition gets ATTACKER and DEFENDER
+    typedef void (*Action)(Wizard, Wizard);
+    /*  Function that will be implemented dynamically during the CREATE SPELL???*/
+    Action action;
 
    public:
-    Spell(string name) : name(name){};
+    Spell(string name, Action action) : name(name), action(action){};
     Spell(){};
     ~Spell(){};
 
-    /*  Function that will be implemented dynamically during the CREATE SPELL???*/
-    void action();
+    void make_action(Wizard attacker, Wizard defender) {
+        return action(attacker, defender);
+    }
+    
     string getSpellName();
 };
 
