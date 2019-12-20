@@ -24,7 +24,7 @@ class Wizard {
    public:
     // target constructor to make a wizard
     Wizard(string name, House house, int hp) : name(name), house(house), hp(hp){};
-    // delegating contsructor for wizard withought a name
+    // delegating constructor for wizard withought a name
     Wizard(House house, int hp) : Wizard("", house, hp){};
     Wizard(){};
     ~Wizard(){};
@@ -41,8 +41,6 @@ class Wizard {
 class Spell {
    private:
     string name;
-
-    // action function definition gets ATTACKER and DEFENDER
     typedef void (*Action)(Wizard, Wizard);
     /*  Function that will be implemented dynamically during the CREATE SPELL???*/
     Action action;
@@ -55,8 +53,9 @@ class Spell {
     void make_action(Wizard attacker, Wizard defender) {
         return action(attacker, defender);
     }
-    
-    string getSpellName();
+
+    virtual string getSpellName();
+    virtual string toString();
 };
 
 class Round {
@@ -85,14 +84,17 @@ House Wizard::getWizardHouse() {
 int Wizard::getWizardHp() {
     return this->hp;
 }
+string Wizard::toString() {
+    return "Name: " + this->getWizardName() + ",House: " + std::to_string(this->getWizardHouse()) + ",Hp: " + std::to_string(this->getWizardHp());
+}
 std::vector<Spell> Wizard::getWizardSpells() {
     return this->SpellsKnown;
 }
 string Spell::getSpellName() {
     return this->name;
 }
-string Wizard::toString() {
-    return "Name: " + this->getWizardName() + ",House: " + std::to_string(this->getWizardHouse()) + ",Hp: " + std::to_string(this->getWizardHp());
+string Spell::toString() {
+    return "Spell name: " + this->getSpellName() + "\n";
 }
 
 // Returns a string representation of a House
@@ -117,5 +119,10 @@ string toStringOfHouse(House house) {
 
 std::ostream& operator<<(std::ostream& os, Spell spell) {
     os << spell.getSpellName();
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, Wizard wizard) {
+    os << wizard.getWizardName();
     return os;
 }
