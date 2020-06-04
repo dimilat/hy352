@@ -85,12 +85,6 @@ class Wizard {
     };
     // delegating constructor for wizard withought a name
     Wizard(string house, int hp) : Wizard("", house, hp){};
-    Wizard(const Wizard &wizard_tocopy) {
-        this->name = wizard_tocopy.name;
-        this->house = wizard_tocopy.house;
-        this->hp = wizard_tocopy.hp;
-        this->max_hp = wizard_tocopy.hp;
-    };
     Wizard(){};
     ~Wizard(){};
 
@@ -416,8 +410,7 @@ int not_function(int x) {
 Wizard *find_wizard(string name) {
     for (unsigned int i = 0; i < Vectors::AllWizards.size(); i++) {
         if (Vectors::AllWizards[i]->getWizardName() == name) {
-            Wizard *temp_wiz = Vectors::AllWizards[i];
-            return temp_wiz;
+            return Vectors::AllWizards[i];
         }
     }
     if (name[0] != '\0') {
@@ -482,7 +475,7 @@ void initialize_Players_Wizards() {
         std::cin.getline(wizard_name, sizeof(wizard_name));
     }
 
-    Vectors::Players.push_back(find_wizard(wizard_name));
+    Vectors::Players.push_back(new Wizard(*find_wizard(wizard_name)));
 
     std::cout << "\nPlayer2 select wizard:" << std::endl;
     std::cout << "-----------------------" << std::endl;
@@ -499,7 +492,7 @@ void initialize_Players_Wizards() {
         //  std::fgets(wizard_name, 40, stdin);
     }
 
-    Vectors::Players.push_back(find_wizard(wizard_name));
+    Vectors::Players.push_back(new Wizard(*find_wizard(wizard_name)));
     wizard_name[0] = '\0';
 }
 
