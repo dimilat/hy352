@@ -5,6 +5,7 @@
 */
 
 #include <stdarg.h>
+
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -84,6 +85,12 @@ class Wizard {
     };
     // delegating constructor for wizard withought a name
     Wizard(string house, int hp) : Wizard("", house, hp){};
+    Wizard(const Wizard &wizard_tocopy) {
+        this->name = wizard_tocopy.name;
+        this->house = wizard_tocopy.house;
+        this->hp = wizard_tocopy.hp;
+        this->max_hp = wizard_tocopy.hp;
+    };
     Wizard(){};
     ~Wizard(){};
 
@@ -265,6 +272,10 @@ class Spell {
     Spell(string name, Action action) : name(name), action(action) {
         Vectors::Spells.push_back(this);
     };
+    Spell(string name) {
+        this->name = "--SPELL_WITH_NO_NAME--";
+        Vectors::Spells.push_back(this);
+    };
     Spell(){};
     ~Spell(){};
 
@@ -405,8 +416,8 @@ int not_function(int x) {
 Wizard *find_wizard(string name) {
     for (unsigned int i = 0; i < Vectors::AllWizards.size(); i++) {
         if (Vectors::AllWizards[i]->getWizardName() == name) {
-            
-            return Vectors::AllWizards[i];
+            Wizard *temp_wiz = Vectors::AllWizards[i];
+            return temp_wiz;
         }
     }
     if (name[0] != '\0') {
