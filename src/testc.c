@@ -20,34 +20,4 @@ int main() {
         printf("\n");
     }
     myfunction(i);  // klisi
-
-    //printf(" %d \n", b);
-    /*i = 0;
-    while (i < 9) {
-        if ((2 < i) && (i <= 5)) {
-            printf("A");
-        } else {
-            printf("B");
-        }
-        i++;
-    }
-    for (int i = 0; i < 10; i++) {
-        if (i % 3 == 0) {
-            printf(" %d \n", i);
-        }
-    }
-    //printf("sum = %d", sum);
-    return 0;
-    /*
-    for(){
-
-    }
-
-    if(){
-        for() {
-            if(){
-
-            }
-        }
-    }*/
 }

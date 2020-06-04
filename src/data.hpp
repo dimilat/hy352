@@ -405,6 +405,7 @@ int not_function(int x) {
 Wizard *find_wizard(string name) {
     for (unsigned int i = 0; i < Vectors::AllWizards.size(); i++) {
         if (Vectors::AllWizards[i]->getWizardName() == name) {
+            
             return Vectors::AllWizards[i];
         }
     }
